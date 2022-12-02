@@ -22,10 +22,7 @@ class MainService : Service() {
 
     var nodes = listOf<Node>()
 
-    private val dataClient by lazy { Wearable.getDataClient(this) }
     private val messageClient by lazy { Wearable.getMessageClient(this) }
-    private val capabilityClient by lazy { Wearable.getCapabilityClient(this) }
-    private val nodeClient by lazy { Wearable.getNodeClient(this) }
 
     private lateinit var sensorManager: SensorManager
     private lateinit var sensor: Sensor

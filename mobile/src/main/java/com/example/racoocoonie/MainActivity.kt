@@ -1,17 +1,17 @@
 package com.example.racoocoonie
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.wearable.Wearable
+import java.net.HttpURLConnection
+import java.net.URL
 import kotlin.math.abs
 
 
 class MainActivity : AppCompatActivity() {
-    private val dataClient by lazy { Wearable.getDataClient(this) }
     private val messageClient by lazy { Wearable.getMessageClient(this) }
-    private val capabilityClient by lazy { Wearable.getCapabilityClient(this) }
-    private val nodeClient by lazy { Wearable.getNodeClient(this) }
 
     var xGraph = "▁▁▁▁▁▁▁▁▁▁"
     var yGraph = "▁▁▁▁▁▁▁▁▁▁"
@@ -34,7 +34,23 @@ class MainActivity : AppCompatActivity() {
             textView.text = "Gx: ${gx}\n${xGraph}\n" +
                     "Gy: ${gy}\n${yGraph}\n" +
                     "Gz: ${gz}\n${zGraph}"
+            sendData(values[0], values[1], values[2])
         }
+    }
+
+    private fun sendData(gx: Float, gy: Float, gz: Float) {
+        Thread {
+            val data = "[$gx,$gy,$gz]"
+            val url = URL("http://ec2-44-210-136-200.compute-1.amazonaws.com:3000/set?data=$data")
+            (url.openConnection() as HttpURLConnection).apply {
+                try {
+                    inputStream.buffered().read()
+                } catch (_: Exception) {
+                } finally {
+                    disconnect()
+                }
+            }
+        }.start()
     }
 
     private fun getBar(value: Float): String {
