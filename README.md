@@ -1,4 +1,4 @@
-# GIF Demo
+# GIF Demo (53.5 MB)
 
 ![Demo](demo.gif)
 
