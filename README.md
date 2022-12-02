@@ -1,4 +1,4 @@
-# GIF Demo (53.5 MB)
+# GIF Demo (24.8 MB)
 
 - ![GIF Demo](demo.gif)
 - [MP4 Demo (1.51 MB)](https://github.com/ygdanchoi/racoocoonie/blob/main/demo.mp4)
