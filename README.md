@@ -1,7 +1,6 @@
 # GIF Demo (53.5 MB)
 
-![Demo](demo.gif)
-![Demo](demo.mp4)
+<a href="demo.mp4" title="Demo"><img src="demo.gif" alt="Click for video" />
 
 # Related
 
