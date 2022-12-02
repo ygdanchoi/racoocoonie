@@ -1,4 +1,4 @@
-# Demo
+# GIF Demo
 
 ![Demo](demo.gif)
 
